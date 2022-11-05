@@ -1,6 +1,6 @@
 package org.fordgang;
 
-public class String {
+public class TypeofString {
 	
 	public static void main(String[] args) {
 		
@@ -17,8 +17,8 @@ public class String {
 		System.out.println(System.identityHashCode(x2));
 		System.out.println("---------------------------- next");
 		// ImMutable 
-		String s3 = "ramesh";
-		String s4 = "ramesh";
+		String s3 = "Ramesh";
+		String s4 = "Kumar";
 		System.out.println(System.identityHashCode(s3));
 		System.out.println(System.identityHashCode(s4));
 		
