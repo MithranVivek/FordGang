@@ -1,6 +1,6 @@
 package org.fordgang;
 
-public class String {
+public class TaskGank {
 	
 	public static void main(String[] args) {
 		
