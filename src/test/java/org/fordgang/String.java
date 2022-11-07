@@ -1,6 +1,6 @@
 package org.fordgang;
 
-public class Memory {
+public class String {
 	
 	public static void main(String[] args) {
 		
