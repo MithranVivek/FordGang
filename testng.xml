@@ -13,6 +13,7 @@
   </groups>
     <classes>
       <class name="com.Flipkart.testngtdd.MobilePurcheseNg"/>
+      <class name="com.Flipkart.testngtdd.TvPurcheseNg"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
