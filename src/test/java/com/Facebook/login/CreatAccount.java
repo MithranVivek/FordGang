@@ -33,8 +33,8 @@ public class CreatAccount {
 	    driver.manage().window().maximize();
 	   
 	}
-	@Given("clear cach and cookies")
-	public void clear_cach_and_cookies() {
+	@Given("clear cache and cookies")
+	public void clear_cache_and_cookies() {
 		 driver.manage().deleteAllCookies();
 	}
 	
@@ -129,10 +129,10 @@ public class CreatAccount {
 	}
 
 	@SuppressWarnings("unlikely-arg-type")
-	@When("select gender by using oneD list")
-	public void select_gender_by_using_oneD_list(DataTable dataTable) {
-		List<String> gender = dataTable.asList();
-				input = gender.get(1);
+	@When("select gender by using oneD map")
+	public void select_gender_by_using_oneD_map(DataTable dataTable) {
+		Map<String, String> gender = dataTable.asMap(String.class, String.class);
+				input = gender.get("gender");
 		    if(gender.equals("Female")) {
 		    	driver.findElement(By.xpath("(//input[@name='sex'])[1]")).click();
 		    }else if (gender.equals("Male")) {
