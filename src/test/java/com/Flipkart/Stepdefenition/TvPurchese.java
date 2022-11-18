@@ -8,42 +8,42 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
+import com.Flipkart.objectrpository.TvPage;
+import com.Flipkart.resources.CommonActions;
+
 import cucumber.api.java.en.When;
 import io.cucumber.datatable.DataTable;
 
-public class TvPurchese {
+public class TvPurchese extends CommonActions{
+	
+	CommonActions c = new CommonActions();
+	TvPage t = new TvPage();
 	
 	String input;
 	@When("user search Tv")
 	public void user_search_Tv() {
 		input = "Samsung Tv";
-		MobileSteps.driver.findElement(By.name("q")).sendKeys(input,Keys.ENTER);
-		WebElement mobileClick = MobileSteps.driver.findElement(By.xpath("(//div[@class='_4rR01T'])[3]"));
-	    String mName = mobileClick.getText();
+		WebElement element = t.getSearch();
+		c.insertTextEnter(element, input);
+		WebElement mobileClick = t.getPickProduct();
+		c.getValue(mobileClick);
 	    mobileClick.click();
 	}
 
 
 	@When("user choose the Tv")
 	public void user_choose_the_Tv() {
-		String parent = MobileSteps.driver.getWindowHandle();
-		
-		Set<String> child = MobileSteps.driver.getWindowHandles();
-		for (String x:child) {
-			if(!parent.equals(child)) {
-				MobileSteps.driver.switchTo().window(x);
-				System.out.println("Window Switched");
-			}
-		}
+		c.windowHandle();
 	    
 	}
 	@When("user search Tv by using oneD List")
 	public void user_search_Tv_by_using_oneD_List(DataTable dataTable) {
 		List<String> Tv = dataTable.asList();
 		input = Tv.get(2);
-		MobileSteps.driver.findElement(By.name("q")).sendKeys(input,Keys.ENTER);
-		WebElement mobileClick = MobileSteps.driver.findElement(By.xpath("(//div[@class='_4rR01T'])[3]"));
-	    String mName = mobileClick.getText();
+		WebElement element = t.getSearch();
+		c.insertTextEnter(element, input);
+		WebElement mobileClick = t.getPickProduct();
+	    c.getValue(mobileClick);
 	    mobileClick.click();
 	}
 	
@@ -51,18 +51,20 @@ public class TvPurchese {
 	public void user_search_Tv_by_using_oneD_map(DataTable dataTable) {
 		Map<String, String> phone = dataTable.asMap(String.class, String.class);
 		input = phone.get("phone1");
-		MobileSteps.driver.findElement(By.name("q")).sendKeys(input,Keys.ENTER);
-		WebElement mobileClick = MobileSteps.driver.findElement(By.xpath("(//div[@class='_4rR01T'])[3]"));
-	    String mName = mobileClick.getText();
+		WebElement element = driver.findElement(By.name("q"));
+		c.insertTextEnter(element, input);
+		WebElement mobileClick = t.getPickProduct();
+	    c.getValue(mobileClick);
 	    mobileClick.click();
 	}
 	
 	@When("user search Tv {string}")
 	public void user_search_Tv(String string) {
 		input = string;
-		MobileSteps.driver.findElement(By.name("q")).sendKeys(input,Keys.ENTER);
-		WebElement tvClick = MobileSteps.driver.findElement(By.xpath("(//div[@class='_4rR01T'])[3]"));
-	    String mName = tvClick.getText();
+		WebElement element = t.getSearch();
+		c.getValue(element);
+		WebElement tvClick = t.getPickProduct();
+		c.getValue(tvClick);
 	    tvClick.click();
 	}
 }
