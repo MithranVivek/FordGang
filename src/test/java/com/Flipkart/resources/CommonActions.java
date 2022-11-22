@@ -2,7 +2,6 @@ package com.Flipkart.resources;
 
 import java.time.Duration;
 import java.util.Set;
-
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -10,20 +9,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
-import com.Flipkart.Stepdefenition.MobileSteps;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class CommonActions {
 	public static WebDriver driver;
 	
-	public void launch(String url) {
+	public void launch(String url) throws Throwable {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 		driver.manage().deleteAllCookies();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
 		driver.get(url);
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); 
+		 
 	}
 	public void insertText(WebElement element, String value) {
 		element.sendKeys(value);
@@ -63,8 +60,8 @@ public class CommonActions {
 
 	}
 	 
-	 public void implicity(int timeout) {
-		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeout));
+	 public void waiting(int timeout) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeout));
 	 }
 
 }

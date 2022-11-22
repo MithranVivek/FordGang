@@ -22,49 +22,70 @@ public class TvPurchese extends CommonActions{
 	String input;
 	@When("user search Tv")
 	public void user_search_Tv() {
-		input = "Samsung Tv";
-		WebElement element = t.getSearch();
-		c.insertTextEnter(element, input);
-		WebElement mobileClick = t.getPickProduct();
-		c.getValue(mobileClick);
-	    mobileClick.click();
+		try {
+			input = "Samsung Tv";
+			WebElement element = t.getSearch();
+			c.insertTextEnter(element, input);
+			WebElement mobileClick = t.getPickProduct();
+			c.getValue(mobileClick);
+		    mobileClick.click();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 
 
 	@When("user choose the Tv")
 	public void user_choose_the_Tv() {
-		c.windowHandle();
+		try {
+			c.windowHandle();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
 	    
 	}
 	@When("user search Tv by using oneD List")
 	public void user_search_Tv_by_using_oneD_List(DataTable dataTable) {
-		List<String> Tv = dataTable.asList();
-		input = Tv.get(2);
-		WebElement element = t.getSearch();
-		c.insertTextEnter(element, input);
-		WebElement mobileClick = t.getPickProduct();
-	    c.getValue(mobileClick);
-	    mobileClick.click();
+		
+		try {
+			List<String> Tv = dataTable.asList();
+			input = Tv.get(2);
+			WebElement element = t.getSearch();
+			c.insertTextEnter(element, input);
+			WebElement mobileClick = t.getPickProduct();
+		    c.getValue(mobileClick);
+		    mobileClick.click();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 	
 	@When("user search Tv by using oneD map")
 	public void user_search_Tv_by_using_oneD_map(DataTable dataTable) {
-		Map<String, String> phone = dataTable.asMap(String.class, String.class);
+		try {Map<String, String> phone = dataTable.asMap(String.class, String.class);
 		input = phone.get("phone1");
 		WebElement element = driver.findElement(By.name("q"));
 		c.insertTextEnter(element, input);
 		WebElement mobileClick = t.getPickProduct();
 	    c.getValue(mobileClick);
 	    mobileClick.click();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 	
 	@When("user search Tv {string}")
 	public void user_search_Tv(String string) {
-		input = string;
+		try {
+			input = string;
 		WebElement element = t.getSearch();
 		c.getValue(element);
 		WebElement tvClick = t.getPickProduct();
 		c.getValue(tvClick);
 	    tvClick.click();
+		} catch (Exception e) {
+			System.out.println(e);
+			}
 	}
 }

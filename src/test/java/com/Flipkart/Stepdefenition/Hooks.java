@@ -1,27 +1,34 @@
 package com.Flipkart.Stepdefenition;
 
-import java.time.Duration;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 import com.Flipkart.resources.CommonActions;
 
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Hooks extends CommonActions{
 	
 	CommonActions c = new CommonActions();
 	@Before
-	public void beforeScenario() {
-		
-		c.launch("https://flipkart.com/ ");
-		
+	public void beforeScenario() throws Throwable {
+		try {
+		c.launch("https://flipkart.com/");
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 	@After
-	public void afterMethod() {
+	public void afterMethod(Scenario scenario) {
+		if(scenario.isFailed()){
+			final byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+			scenario.embed(screenshot, "image/png");
+		}else{
+			final byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+			scenario.embed(screenshot, "image/png");
+		}
 		driver.quit();
 	}
 
