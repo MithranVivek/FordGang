@@ -10,8 +10,7 @@ import cucumber.api.junit.Cucumber;
 				 glue = "com.Flipkart.Stepdefenition",
 				 plugin = {"html:target","json:target/reports.json"},
 				 monochrome = true,
-				 dryRun = false,
-				 tags = {"@mobile","@tv","@sm1","@st1"}
+				 dryRun = false
 				 )
 public class TestRunner {
 
