@@ -1,4 +1,4 @@
-package org.fordgang;
+package org.TestWork;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;

@@ -1,4 +1,4 @@
-package org.fordgang;
+package org.TestWork;
 
 public class EncapChild {
 	private int id;
